@@ -1,0 +1,31 @@
+{
+  "name": "pi-webfetch",
+  "version": "0.1.0",
+  "description": "Pi package that adds a webfetch tool with markdown fetching, TOC generation, and cache files.",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trotsky1997/pi-webfetch.git"
+  },
+  "homepage": "https://github.com/trotsky1997/pi-webfetch",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "webfetch",
+    "markdown"
+  ],
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-ai": "*",
+    "@mariozechner/pi-coding-agent": "*",
+    "@sinclair/typebox": "*"
+  },
+  "dependencies": {
+    "@quilicicf/markdown-formatter": "^6.0.0",
+    "turndown": "^7.2.2"
+  }
+}
