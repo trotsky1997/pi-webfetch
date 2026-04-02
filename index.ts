@@ -37,7 +37,7 @@ const WebfetchParams = Type.Object({
   ),
 });
 
-type SourceName = "jina-reader" | "defuddle" | "markdown-new" | "raw-html-turndown";
+type SourceName = "jina-reader" | "defuddle" | "markdown-new" | "pure-md" | "raw-html-turndown";
 type OutputMode = "all" | "path-only" | "toc-only";
 
 type WebfetchParamsShape = {
@@ -503,7 +503,7 @@ export default function webfetch(pi: ExtensionAPI) {
     name: "webfetch",
     label: "Webfetch",
     description:
-      "Fetch a URL as markdown, cache it under .md/, and return either the cache path, the TOC plus path, or the full markdown plus path. Responsibility chain: Jina Reader, defuddle.md, markdown.new, then raw HTML converted with turndown. Continue to the next step when a request fails or returns blank content.",
+      "Fetch a URL as markdown, cache it under .md/, and return either the cache path, the TOC plus path, or the full markdown plus path. Responsibility chain: Jina Reader, defuddle.md, markdown.new, pure.md, then raw HTML converted with turndown. Continue to the next step when a request fails or returns blank content.",
     parameters: WebfetchParams,
 
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
@@ -517,6 +517,7 @@ export default function webfetch(pi: ExtensionAPI) {
         { source: "jina-reader", requestUrl: `https://r.jina.ai/${normalizedUrl}` },
         { source: "defuddle", requestUrl: `https://defuddle.md/${normalizedUrl}` },
         { source: "markdown-new", requestUrl: `https://markdown.new/${normalizedUrl}` },
+        { source: "pure-md", requestUrl: `https://pure.md/${normalizedUrl}` },
         { source: "raw-html-turndown", requestUrl: normalizedUrl },
       ];
 

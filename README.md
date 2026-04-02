@@ -7,9 +7,12 @@ A pi package that adds one tool: `webfetch`.
 1. `https://r.jina.ai/{url}`
 2. `https://defuddle.md/{url}`
 3. `https://markdown.new/{url}`
-4. Raw HTML converted to markdown with `turndown`
+4. `https://pure.md/{url}`
+5. Raw HTML converted to markdown with `turndown`
 
 If one step fails, times out, returns a non-2xx response, or returns blank content, `webfetch` continues to the next step.
+
+The `pure.md` step adds another hosted markdown extractor before the raw HTML fallback, which helps on pages that need stronger browser impersonation or JavaScript-aware rendering.
 
 After a successful fetch, the tool:
 
